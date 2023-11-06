@@ -1,0 +1,8 @@
+[Game]
+Game=Herbert's Dummy Run
+
+[PageHeaders]
+GameIndex=<> disassembly (work in progress)
+
+[Config]
+HtmlWriterClass=dummyrun.HerbertHtmlWriter
