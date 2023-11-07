@@ -1,3 +1,6 @@
+b $4000 Loading screen
+s $5B00 Screen buffer
+s $6D00 Sprite buffer
 b $7F00 Buffer for reversing / inverting graphics
 w $8000 Logic pattern table
 w $800E Logic action
@@ -217,8 +220,7 @@ b $8C84 Room data 1C
 b $8C98 Room data 1D
 c $8CA5
 c $8D04
-b $8D69
-c $8D6C 
+c $8D69
 b $8D8E
 t $8E29 "Here come your jelly babies!"
 c $8E47 Print the jelly baby message and dump a load on screen
@@ -281,7 +283,7 @@ b $9994
 c $9A46
 c $9AAF
 c $9AF1 A collision has occured. Increase tears. ;-(
-b $9B9A
+c $9B9A
 c $9BAB
 c $9C25
 c $9C65
@@ -295,14 +297,25 @@ b $9D66 Currently active lift button
 b $9D6B Current position
 b $9D6D
 b $9D9A
+
+g $9DA6 X co-ordinate
+g $9DA7 Y pointer to screen row (?)
+W $9DA7
+g $9DA9
+W $9DA9
+g $9DAB Copy of the current stack pointer
+W $9DAB
+g $9DAD Number of lives left
+
 b $9DC8 Selected control mechanism (0 = Keyboard, 1 = Kempston, 2 = Sinclair)
 b $9DAD Number of lives left
 b $9DAE
 b $9DD1 Current lift floor - 1
-b $9DD2
-b $9DE2 Character set
-b $9E35
-b $9F45
+g $9DD2
+W $9DD2
+g $9DD4
+g $9DD5
+b $9DD6 Character set
 c $9F4E Print a FF terminated string
 R $9F4E HL Address of the string to print
 R $9F4E D y co-ordinate to start printing
@@ -475,8 +488,16 @@ b $CAA6
 b $CAA8 Game flags
 c $CABF Initialize game data
 c $CB25
+
 b $CB56 Block room graphics
-D $CB56 #UDGTABLE { #UDGARRAY1,$47,,2;$CB56-$CE55-1-8(blocks0) | #UDGARRAY1,$47,,2;$CE56-$D155-1-8(blocks1) | #UDGARRAY1,$47,,2;$D156-$D355-1-8(blocks2) | #UDGARRAY1,$47,,2;$D356-$D555-1-8(blocks3) | #UDGARRAY1,$47,,2;$D556-$D755-1-8(blocks4) | #UDGARRAY1,$47,,2;$D756-$D955-1-8(blocks5) | #UDGARRAY1,$47,,2;$D956-$DBB5-1-8(blocks6) | } TABLE#
+D $CB56 #UDGTABLE { #UDGARRAY1,$47,,2;$CB56-$CE55-1-8(blocks0) | 
+. #UDGARRAY1,$47,,2;$CE56-$D155-1-8(blocks1) | 
+.#UDGARRAY1,$47,,2;$D156-$D355-1-8(blocks2) | 
+. #UDGARRAY1,$47,,2;$D356-$D555-1-8(blocks3) | 
+. #UDGARRAY1,$47,,2;$D556-$D755-1-8(blocks4) | 
+. #UDGARRAY1,$47,,2;$D756-$D955-1-8(blocks5) | 
+. #UDGARRAY1,$47,,2;$D956-$DBB5-1-8(blocks6) | } TABLE#
+
 w $DBB6 Room graphic part table
 
 b $E398 Room block graphics 00
