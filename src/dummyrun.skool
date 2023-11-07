@@ -1973,8 +1973,6 @@ b$89F1 DEFB $F5,$17,$0E,$1B,$1F,$0D,$05,$04
  $8A19 DEFB $16,$0B,$52,$19,$0B,$53,$FF
 
 ; Room data : 02 (Toy Department)
-; 
-; #CALL:print_room_data(#PC,room_02)
 b$8A20 DEFB $F5,$01,$15,$2E,$00,$0E,$07,$1E
  $8A28 DEFB $0E,$1E,$05,$0B,$2F,$10,$10,$2F
  $8A30 DEFB $05,$10,$30,$11,$0E,$31,$08,$07
